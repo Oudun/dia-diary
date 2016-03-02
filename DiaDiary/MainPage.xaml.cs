@@ -43,6 +43,7 @@ namespace PhoneAppDB
             }
         }
 
+        
 
         // Constructor
         public MainPage()
@@ -56,6 +57,43 @@ namespace PhoneAppDB
             this.DataContext = this;
         }
 
+
+        // Handle selection changed on ListBox
+        private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // If selected index is -1 (no selection) do nothing
+            if (MainListBox.SelectedIndex == -1)
+              return;
+
+            // Navigate to the new page
+            if (MainListBox.SelectedIndex == 0) {
+                NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));
+            }
+            else if (MainListBox.SelectedIndex == 1)
+            {
+                NavigationService.Navigate(new Uri("/ShotsPage.xaml", UriKind.Relative));
+            }
+            else if (MainListBox.SelectedIndex == 2)
+            {
+                NavigationService.Navigate(new Uri("/FoodPage.xaml", UriKind.Relative));
+            }
+            else if (MainListBox.SelectedIndex == 3)
+            {
+                NavigationService.Navigate(new Uri("/ActivityPage.xaml", UriKind.Relative));
+            }
+            else if (MainListBox.SelectedIndex == 4)
+            {
+                NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+            }
+            else if (MainListBox.SelectedIndex == 5)
+            {
+                NavigationService.Navigate(new Uri("/ReportPage.xaml", UriKind.Relative));
+            }
+                
+
+            // Reset selected index to -1 (no selection)
+            MainListBox.SelectedIndex = -1;
+        }
 
         private void deleteTaskButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,25 +117,6 @@ namespace PhoneAppDB
                 // Put the focus back to the main page.
                 this.Focus();
             }
-        }
-
-
-        private void newToDoTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            // Clear the text box when it gets focus.
-            newToDoTextBox.Text = String.Empty;
-        }
-
-        private void newToDoAddButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Create a new to-do item based on the text box.
-            ToDoItem newToDo = new ToDoItem { ItemName = newToDoTextBox.Text };
-
-            // Add a to-do item to the observable collection.
-            ToDoItems.Add(newToDo);
-
-            // Add a to-do item to the local database.
-            toDoDB.ToDoItems.InsertOnSubmit(newToDo);
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -145,6 +164,7 @@ namespace PhoneAppDB
     public class ToDoDataContext : DataContext
     {
         // Specify the connection string as a static, used in main page and app.xaml.
+        //public static string DBConnectionString = "Data Source=isostore:/ToDo.sdf";
         public static string DBConnectionString = "Data Source=isostore:/ToDo.sdf";
 
         // Pass the connection string to the base class.
