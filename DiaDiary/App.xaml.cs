@@ -32,15 +32,6 @@ namespace PhoneAppDB {
 
             }
 
-            
-            using (ToDoDataContext db = new ToDoDataContext(ToDoDataContext.DBConnectionString)) {
-                if (db.DatabaseExists() == false) {
-                    db.CreateDatabase();
-                } else {
-                    System.Diagnostics.Debug.WriteLine("Database present");
-                }
-            }
-
             using (AppDataContext db = new AppDataContext(AppDataContext.DBConnectionString))
             {
                 if (db.DatabaseExists() == false) {

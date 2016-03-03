@@ -29,12 +29,30 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ListBox x:Name="glucoseRecordsList" ItemsSource="{Binding GlucoseRecords}">
+
+                <!--<StackPanel Margin="0,0,0,17" Width="432" Height="78">
+                    <TextBlock Text="Shots" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                    <TextBlock Text="Insuline shots taken" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                </StackPanel>-->
+
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=GlucoseRecordValue}"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=GlucoseRecordValue}"/>
+                            <TextBlock Text="{Binding Path=GlucoseTime}"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Text="Add Record" Margin="0,525,0,0" />
+                <Button Content="add" Grid.Column="1" Click="Add_Record" Margin="0,525,0,0" />
+            </Grid>
+
         </Grid>
     </Grid>
  
