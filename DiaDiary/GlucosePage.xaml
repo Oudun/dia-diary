@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
+
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
@@ -37,9 +37,9 @@
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=GlucoseRecordValue}"/>
-                            <TextBlock Text="{Binding Path=GlucoseTime}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}"/>
+                            <TextBlock TextAlignment="Left" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -49,24 +49,13 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBox Text="Add Record" Margin="0,525,0,0" />
+                <TextBox x:Name="GlucoseValueInput" InputScope="Number" Text="1" Margin="0,525,0,0" />
                 <Button Content="add" Grid.Column="1" Click="Add_Record" Margin="0,525,0,0" />
             </Grid>
 
         </Grid>
     </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+
 
 </phone:PhoneApplicationPage>
 

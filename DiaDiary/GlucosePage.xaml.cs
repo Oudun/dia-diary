@@ -66,7 +66,7 @@ namespace PhoneAppDB
 
         private void Add_Record(object sender, RoutedEventArgs e) {
 
-            GlucoseRecord glucoseRecord = new GlucoseRecord { GlucoseRecordId = 148, GlucoseRecordValue = 148, GlucoseTime = DateTime.Now };
+            GlucoseRecord glucoseRecord = new GlucoseRecord { GlucoseRecordValue = float.Parse(GlucoseValueInput.Text), GlucoseTime = DateTime.Now };
 
             // Add a to-do item to the observable collection.
             GlucoseRecords.Add(glucoseRecord);
