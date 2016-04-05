@@ -66,6 +66,9 @@
     <Compile Include="GlucosePage.xaml.cs">
       <DependentUpon>GlucosePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlucosePageEdit.xaml.cs">
+      <DependentUpon>GlucosePageEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="GlucosePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GlucosePageEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

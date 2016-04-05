@@ -48,16 +48,13 @@ namespace PhoneAppDB
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
 
             var glucoseRecordsInDB = from GlucoseRecord glucoseRecord in dataContext.GlucoseRecordsTable select glucoseRecord;
-
             GlucoseRecords = new ObservableCollection<GlucoseRecord>(glucoseRecordsInDB);
-
             base.OnNavigatedTo(e);
 
         }
 
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
 
         }
 
@@ -66,16 +63,28 @@ namespace PhoneAppDB
 
         private void Add_Record(object sender, RoutedEventArgs e) {
 
-            GlucoseRecord glucoseRecord = new GlucoseRecord { GlucoseRecordValue = float.Parse(GlucoseValueInput.Text), GlucoseTime = DateTime.Now };
+            GlucoseRecord glucoseRecord = new GlucoseRecord { 
+                GlucoseRecordValue = float.Parse(GlucoseValueInput.Text), 
+                GlucoseTime = DateTime.Now 
+            };
 
-            // Add a to-do item to the observable collection.
             GlucoseRecords.Add(glucoseRecord);
-
-            // Add a to-do item to the local database.
             dataContext.GlucoseRecordsTable.InsertOnSubmit(glucoseRecord);
-
             dataContext.SubmitChanges();
         
+        }
+
+        private void Edit_Record(object sender, RoutedEventArgs e) {
+
+            var tag = (sender as Button).Tag;
+            int t = Convert.ToInt16(tag);
+            NavigationService.Navigate(new Uri("/GlucosePageEdit.xaml?selectedItem=" + t, UriKind.Relative));
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

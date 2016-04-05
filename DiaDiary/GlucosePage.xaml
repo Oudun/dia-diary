@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
-
+    FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
@@ -28,19 +28,19 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="glucoseRecordsList" ItemsSource="{Binding GlucoseRecords}">
-
-                <!--<StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                    <TextBlock Text="Shots" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                    <TextBlock Text="Insuline shots taken" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                </StackPanel>-->
-
+            <ListBox x:Name="glucoseRecordsList" ItemsSource="{Binding GlucoseRecords}" Background="Beige">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}"/>
-                            <TextBlock TextAlignment="Left" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"/>
-                        </StackPanel>
+                        <Grid Background="Red" MinWidth="400">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock TextAlignment="Left" Grid.Column="1" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <Button Content="edit" Grid.Column="2" Click="Edit_Record" Tag="{Binding Path=GlucoseRecordId}"/>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
