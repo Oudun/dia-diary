@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -17,25 +18,85 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Border">
-                <Setter Property="Padding" Value="5" />
-            </Style>
-        </Grid.Resources>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-            <TextBlock x:Name="RecordId" Text="{Binding GlucoseRecordId}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}"/>
-            <TextBlock x:Name="RecordValue" Text="{Binding GlucoseRecordValue}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}"/>
-            <TextBlock x:Name="RecordDate" Margin="9,-7,0,0" Text="{Binding GlucoseTime, StringFormat='MMM dd, hh:mm'}" Style="{StaticResource PhoneTextLargeStyle}"/>
+        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" Text="Glucose Record" Style="{StaticResource PhoneTextTitle1Style}"/>
+        
+        <StackPanel x:Name="TitlePanel" Grid.Row="1">
+
+            <Grid x:Name="Details">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Center" x:Name="RecordValueLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Glucose Level" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBox VerticalAlignment="Center" x:Name="RecordValue" Grid.Column="0" Grid.Row="3" Text="{Binding GlucoseRecordValue}" />
+                <TextBlock VerticalAlignment="Center" x:Name="RecordValueUnit" Grid.Column="2" Grid.Row="3" Text="ml" Style="{StaticResource PhoneTextLargeStyle}"/>
+
+                <TextBlock VerticalAlignment="Center" x:Name="RecordDateLable" Grid.Column="0"  Grid.Row="0" Text="Date" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock VerticalAlignment="Center" x:Name="RecordTimeLable" Grid.Column="1"  Grid.Row="0" Text="Time" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <toolkit:DatePicker VerticalAlignment="Center" x:Name="RecordDate" Grid.Column="0" Grid.Row="1"  Value="{Binding GlucoseTime, StringFormat='MMM dd'}"/>
+                <toolkit:TimePicker VerticalAlignment="Center" x:Name="RecordTime" Grid.Column="2" Grid.Row="1"  Value="{Binding GlucoseTime, StringFormat='hh:mm'}"/>
+
+                <TextBlock VerticalAlignment="Center" x:Name="spacer" Grid.Column="0"  Grid.Row="4" Text=" " Style="{StaticResource PhoneTextLargeStyle}"/>
+
+                <Button Grid.Column="0" Grid.Row="5" Content="Save"/>
+                <Button Grid.Column="1" Grid.Row="5" Content="Cancel"/>
+
+            </Grid>
+
+            
+            
+            
+            <!--<Grid x:Name="Details">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Center" x:Name="RecordValueLabel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Text="GlucoseRecordValue" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBox VerticalAlignment="Center" x:Name="RecordValue" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding GlucoseRecordValue}" />
+                <TextBlock VerticalAlignment="Center" x:Name="RecordValueUnit" Grid.Column="2" Grid.Row="1" Text="ml" Style="{StaticResource PhoneTextLargeStyle}"/>
+
+                <TextBlock VerticalAlignment="Center" x:Name="RecordDateLable" Grid.Column="0"  Grid.ColumnSpan="3"  Grid.Row="2" Text="GlucoseTime" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <toolkit:DatePicker VerticalAlignment="Center" x:Name="RecordDate" Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="2" Value="{Binding GlucoseTime, StringFormat='MMM dd'}"/>
+                <toolkit:TimePicker VerticalAlignment="Center" x:Name="RecordTime" Grid.Column="2" Grid.Row="3"  Value="{Binding GlucoseTime, StringFormat='hh:mm'}"/>
+
+            </Grid>-->
+
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Delete" Width="300" Grid.Row="2">
+            <!--<Image Source="appbar.delete.rest.png"/>-->
+            <Button.Background>
+                <ImageBrush ImageSource="appbar.delete.rest.png" Stretch="none"/>
+            </Button.Background>
+
+        </Button>
+
     </Grid>
 
 </phone:PhoneApplicationPage>
