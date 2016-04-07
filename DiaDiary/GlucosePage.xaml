@@ -15,47 +15,49 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent" DataContext="{Binding}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="SELF CONTROL" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Glucose level" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" Text="Glucose Records" Style="{StaticResource PhoneTextTitle1Style}"/>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="glucoseRecordsList" ItemsSource="{Binding GlucoseRecords}" Background="Beige">
+            <ListBox x:Name="glucoseRecordsList" ItemsSource="{Binding GlucoseRecords}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Background="Red" MinWidth="400">
+                        <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}" Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <TextBlock TextAlignment="Left" Grid.Column="1" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <Button Content="edit" Grid.Column="2" Click="Edit_Record" Tag="{Binding Path=GlucoseRecordId}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <Button VerticalAlignment="Center" Content="edit" Grid.Column="2" Click="Edit_Record" Tag="{Binding Path=GlucoseRecordId}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBox x:Name="GlucoseValueInput" InputScope="Number" Text="1" Margin="0,525,0,0" />
-                <Button Content="add" Grid.Column="1" Click="Add_Record" Margin="0,525,0,0" />
-            </Grid>
-
         </Grid>
-    </Grid>
 
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="GlucoseValueInput" InputScope="Number" Text="1"/>
+            <Button Content="add" Grid.Column="1" Click="Add_Record"/>
+        </Grid>
+        
+    </Grid>
 
 </phone:PhoneApplicationPage>
 
