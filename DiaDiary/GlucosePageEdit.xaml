@@ -69,7 +69,7 @@
         <Button Margin="10"  Style="{StaticResource TabButton}" Click="Delete_Record"
                 VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding GlucoseRecordId}"
                 Content="Delete" IsEnabled="{Binding GlucoseRecordId}" Grid.Row="2"/>
-
+        <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="257,98,0,0" Name="URL" Text="TextBlock" VerticalAlignment="Top" />
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -117,20 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="apptitle" xml:space="preserve">
-    <value>Resource culture locale: en-US</value>
-    <comment>used by the TextBlock, named ApplicationTitle</comment>
-  </data>
-  <data name="okmessage" xml:space="preserve">
-    <value>You will be directed to English MSDN page</value>
-    <comment>passed to the message box as a parameter</comment>
-  </data>
-  <data name="pagetitle" xml:space="preserve">
-    <value>English MSDN (en-US)</value>
-    <comment>used by the TextBlock, named PageTitle</comment>
-  </data>
-  <data name="url" xml:space="preserve">
-    <value>http://msdn.microsoft.com</value>
-    <comment>used by the TextBlock, named URL</comment>
+  <data name="glucoselevel" xml:space="preserve">
+    <value>Glucose level</value>
   </data>
 </root>

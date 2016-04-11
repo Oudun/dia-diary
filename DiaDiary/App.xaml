@@ -28,10 +28,18 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        
+
+        <local:LocalizedResx xmlns:local ="clr-namespace:PhoneAppDB" x:Key="LocalizedResx"/>
+
     </Application.Resources>
 
-    
+
+
+
+
+
+
+
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->
         <shell:PhoneApplicationService 

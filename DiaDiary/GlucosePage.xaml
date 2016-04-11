@@ -26,7 +26,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" Text="Glucose Records" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <!--<TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" Text="Glucose Records" Style="{StaticResource PhoneTextTitle1Style}"/>-->
+        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" 
+                   Text="{Binding Path=MyLocalizedResx.glucoselevel, Source={StaticResource LocalizedResx}}" 
+                   Style="{StaticResource PhoneTextTitle1Style}"/>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">

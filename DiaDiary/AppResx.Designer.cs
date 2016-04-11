@@ -61,38 +61,11 @@ namespace PhoneAppDB {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource culture locale: en-US.
+        ///   Looks up a localized string similar to Glucose level.
         /// </summary>
-        public static string apptitle {
+        public static string glucoselevel {
             get {
-                return ResourceManager.GetString("apptitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You will be directed to English MSDN page.
-        /// </summary>
-        public static string okmessage {
-            get {
-                return ResourceManager.GetString("okmessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English MSDN (en-US).
-        /// </summary>
-        public static string pagetitle {
-            get {
-                return ResourceManager.GetString("pagetitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://msdn.microsoft.com.
-        /// </summary>
-        public static string url {
-            get {
-                return ResourceManager.GetString("url", resourceCulture);
+                return ResourceManager.GetString("glucoselevel", resourceCulture);
             }
         }
     }

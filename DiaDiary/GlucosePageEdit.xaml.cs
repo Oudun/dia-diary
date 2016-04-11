@@ -61,30 +61,27 @@ namespace PhoneAppDB {
                 return;
             }
 
+
+            //Updating glucose level
+            glucoseRecord.GlucoseRecordValue = float.Parse(RecordValue.Text);
+
+            //Updating time glucose level taken
+            DateTime dateTime = glucoseRecord.GlucoseTime;
+            DateTime updatedDate = DateTime.Parse(RecordDate.ValueString);
+            DateTime updatedTime = DateTime.Parse(RecordTime.ValueString);
+            DateTime newDateTime = new DateTime(
+                updatedDate.Year, updatedDate.Month, updatedDate.Day,
+                updatedTime.Hour, updatedTime.Minute, 0
+                );
+            glucoseRecord.GlucoseTime = newDateTime;
+
             if (glucoseRecord.GlucoseRecordId == 0) {
-
                 dataContext.GlucoseRecordsTable.InsertOnSubmit(glucoseRecord);
-                dataContext.SubmitChanges();
+            } 
 
-            } else {
-                //Updating glucose level
-                glucoseRecord.GlucoseRecordValue = float.Parse(RecordValue.Text);
-
-                //Updating time glucose level taken
-                DateTime dateTime = glucoseRecord.GlucoseTime;
-                DateTime updatedDate = DateTime.Parse(RecordDate.ValueString);
-                DateTime updatedTime = DateTime.Parse(RecordTime.ValueString);
-                DateTime newDateTime = new DateTime(
-                    updatedDate.Year, updatedDate.Month, updatedDate.Day,
-                    updatedTime.Hour, updatedTime.Minute, 0
-                    );
-                glucoseRecord.GlucoseTime = newDateTime;
-                dataContext.SubmitChanges();
-
-                //Navigating back to records list
-
-            }
-
+            dataContext.SubmitChanges();
+            
+            //Navigating back to records list
             NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));            
                 
         }
