@@ -62,17 +62,24 @@ namespace PhoneAppDB
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void Add_Record(object sender, RoutedEventArgs e) {
-
-            GlucoseRecord glucoseRecord = new GlucoseRecord { 
-                GlucoseRecordValue = float.Parse(GlucoseValueInput.Text), 
-                GlucoseTime = DateTime.Now 
+/*
+            glucoserecord glucoserecord = new glucoserecord { 
+                glucoserecordvalue = float.parse(glucosevalueinput.text), 
+                glucosetime = datetime.now 
             };
 
-            GlucoseRecords.Add(glucoseRecord);
-            dataContext.GlucoseRecordsTable.InsertOnSubmit(glucoseRecord);
-            dataContext.SubmitChanges();
-        
+            glucoserecords.add(glucoserecord);
+            datacontext.glucoserecordstable.insertonsubmit(glucoserecord);
+            datacontext.submitchanges();
+*/        
         }
+
+        private void New_Record(object sender, RoutedEventArgs e) {
+
+            NavigationService.Navigate(new Uri("/GlucosePageEdit.xaml", UriKind.Relative));
+
+        }
+
 
         private void Edit_Record(object sender, RoutedEventArgs e) {
 

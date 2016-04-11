@@ -21,27 +21,31 @@ namespace PhoneAppDB {
         
         private AppDataContext dataContext;
 
+        private bool isFormValid = true;
+
         public GlucosePageEdit()
         {
             InitializeComponent();
 
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
 
             string selectedIndex = "";
-            
+            dataContext = new AppDataContext(AppDataContext.DBConnectionString);
+
             if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex)) {
                 int index = int.Parse(selectedIndex);
                 this.DataContext = this;
-                dataContext = new AppDataContext(AppDataContext.DBConnectionString);
-                var item = dataContext.GlucoseRecordsTable.Single(x => x.GlucoseRecordId == index);
-                glucoseRecord = item;
-                LayoutRoot.DataContext = glucoseRecord;
+                glucoseRecord = dataContext.GlucoseRecordsTable.Single(x => x.GlucoseRecordId == index);
+            } else {
+                glucoseRecord = new GlucoseRecord {
+                    GlucoseRecordValue = -1,
+                    GlucoseTime = DateTime.Now
+                };                         
             }
-
-
+            
+            LayoutRoot.DataContext = glucoseRecord;
 
         }
 
@@ -51,31 +55,81 @@ namespace PhoneAppDB {
 
         private void Save_Record(object sender, RoutedEventArgs e) {
 
-            glucoseRecord.GlucoseRecordValue = float.Parse(RecordValue.Text);
-            dataContext.SubmitChanges();
-            NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));
+            Validate_Value(sender, e);
 
-            //var tag = (sender as Button).Tag;
-            //int t = Convert.ToInt16(tag);
-            //NavigationService.Navigate(new Uri("/GlucosePageEdit.xaml?selectedItem=" + t, UriKind.Relative));
+            if (!isFormValid) {
+                return;
+            }
 
+            if (glucoseRecord.GlucoseRecordId == 0) {
+
+                dataContext.GlucoseRecordsTable.InsertOnSubmit(glucoseRecord);
+                dataContext.SubmitChanges();
+
+            } else {
+                //Updating glucose level
+                glucoseRecord.GlucoseRecordValue = float.Parse(RecordValue.Text);
+
+                //Updating time glucose level taken
+                DateTime dateTime = glucoseRecord.GlucoseTime;
+                DateTime updatedDate = DateTime.Parse(RecordDate.ValueString);
+                DateTime updatedTime = DateTime.Parse(RecordTime.ValueString);
+                DateTime newDateTime = new DateTime(
+                    updatedDate.Year, updatedDate.Month, updatedDate.Day,
+                    updatedTime.Hour, updatedTime.Minute, 0
+                    );
+                glucoseRecord.GlucoseTime = newDateTime;
+                dataContext.SubmitChanges();
+
+                //Navigating back to records list
+
+            }
+
+            NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));            
+                
         }
 
         private void Delete_Record(object sender, RoutedEventArgs e) {
 
-            dataContext.GlucoseRecordsTable.DeleteOnSubmit(glucoseRecord);
-            dataContext.SubmitChanges();
+            if (MessageBox.Show("Are you sure?", "Delete Item", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
 
-            var tag = (sender as Button).Tag;
-            int t = Convert.ToInt16(tag);
-            NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));
+                if (glucoseRecord.GlucoseRecordId > 0) {
 
+                    dataContext.GlucoseRecordsTable.DeleteOnSubmit(glucoseRecord);
+                    dataContext.SubmitChanges();
+
+                    var tag = (sender as Button).Tag;
+                    int t = Convert.ToInt16(tag);
+                    NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));
+
+                }
+
+            }
+            
         }
 
         private void Cancel(object sender, RoutedEventArgs e) {
 
             NavigationService.Navigate(new Uri("/GlucosePage.xaml", UriKind.Relative));
 
+        }
+
+        private void Validate_Value(object sender, RoutedEventArgs e) { 
+
+            try {
+                float value = float.Parse(RecordValue.Text);
+                if (value <= 0 || value > 100) {
+                    isFormValid = false;
+                    RecordValue.BorderBrush = new SolidColorBrush(Colors.Red);
+                } else {
+                    isFormValid = true;
+                    RecordValue.BorderBrush = new SolidColorBrush(Colors.Transparent);               
+                }
+            } catch {
+                isFormValid = false;
+                RecordValue.BorderBrush = new SolidColorBrush(Colors.Red); 
+            }
+        
         }
     
     }
