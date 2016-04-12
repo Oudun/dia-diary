@@ -11,13 +11,29 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
-namespace PhoneAppDB
-{
-    public partial class Page1 : PhoneApplicationPage
-    {
-        public Page1()
-        {
+namespace TypeOneControl {
+    
+    public partial class ShotPage : PhoneApplicationPage {
+        
+        public ShotPage() {
             InitializeComponent();
         }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void New_Record(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Record(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
+
 }

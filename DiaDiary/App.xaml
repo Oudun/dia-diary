@@ -1,5 +1,5 @@
 ﻿<Application 
-    x:Class="PhoneAppDB.App"
+    x:Class="TypeOneControl.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -29,16 +29,9 @@
             <Setter Property="FontSize" Value="16"/>
         </Style>
 
-        <local:LocalizedResx xmlns:local ="clr-namespace:PhoneAppDB" x:Key="LocalizedResx"/>
+        <local:LocalizedResx xmlns:local ="clr-namespace:TypeOneControl" x:Key="Labels"/>
 
     </Application.Resources>
-
-
-
-
-
-
-
 
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->

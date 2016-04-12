@@ -11,9 +11,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Data;
 using Microsoft.Phone.Controls;
-  
 
-namespace PhoneAppDB {
+
+namespace TypeOneControl
+{
     
     public partial class GlucosePageEdit : PhoneApplicationPage {
 
@@ -40,7 +41,7 @@ namespace PhoneAppDB {
                 glucoseRecord = dataContext.GlucoseRecordsTable.Single(x => x.GlucoseRecordId == index);
             } else {
                 glucoseRecord = new GlucoseRecord {
-                    GlucoseRecordValue = -1,
+                    GlucoseRecordValue = 0,
                     GlucoseTime = DateTime.Now
                 };                         
             }

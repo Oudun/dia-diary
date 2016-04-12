@@ -16,7 +16,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
-namespace PhoneAppDB {
+namespace TypeOneControl
+{
     
     public partial class MainPage : PhoneApplicationPage {
 

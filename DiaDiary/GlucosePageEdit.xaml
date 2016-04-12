@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="PhoneAppDB.GlucosePageEdit"
+    x:Class="TypeOneControl.GlucosePageEdit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0" Text="Glucose Record" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <TextBlock x:Name="PageTitle" Margin="0,0,0,50" Grid.Row="0"  Text="{Binding Path=LocalizedLabels.glucose_record, Source={StaticResource Labels}}" Style="{StaticResource PhoneTextTitle1Style}"/>
         
         <StackPanel x:Name="TitlePanel" Grid.Row="1">
 
@@ -42,25 +42,19 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock VerticalAlignment="Center" x:Name="RecordDateLable" Grid.Column="0"  Grid.Row="0" Text="Date" Style="{StaticResource PhoneTextLargeStyle}"/>
-                <TextBlock VerticalAlignment="Center" x:Name="RecordTimeLable" Grid.Column="1"  Grid.Row="0" Text="Time" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock Text="{Binding Path=LocalizedLabels.date, Source={StaticResource Labels}}" VerticalAlignment="Center" x:Name="RecordDateLable" Grid.Column="0"  Grid.Row="0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock  Text="{Binding Path=LocalizedLabels.time, Source={StaticResource Labels}}" VerticalAlignment="Center" x:Name="RecordTimeLable" Grid.Column="1"  Grid.Row="0" Style="{StaticResource PhoneTextLargeStyle}"/>
                 <toolkit:DatePicker VerticalAlignment="Center" x:Name="RecordDate" Grid.Column="0" Grid.Row="1"  Value="{Binding GlucoseTime, StringFormat='MMM dd'}"/>
                 <toolkit:TimePicker VerticalAlignment="Center" x:Name="RecordTime" Grid.Column="2" Grid.Row="1"  Value="{Binding GlucoseTime, StringFormat='hh:mm'}"/>
 
-                <TextBlock VerticalAlignment="Center" x:Name="RecordValueLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Glucose Level" Style="{StaticResource PhoneTextLargeStyle}"/>
-                <TextBox LostFocus="Validate_Value" VerticalAlignment="Center" x:Name="RecordValue" Grid.Column="0" Grid.Row="3" Text="{Binding GlucoseRecordValue}" InputScope="Number">
-                    
-                    <!--interactivity:Interaction.Behaviors>
-                        <awbehaviors:HighlightFormFieldOnErrors PropertyErrors="{Binding Address.Errors[FirstName]}" />
-                    </interactivity:Interaction.Behaviors-->
-                    
-                </TextBox>
-                <TextBlock VerticalAlignment="Center" x:Name="RecordValueUnit" Grid.Column="2" Grid.Row="3" Text="ml" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock Text="{Binding Path=LocalizedLabels.glucose_value, Source={StaticResource Labels}}" VerticalAlignment="Center" x:Name="RecordValueLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBox LostFocus="Validate_Value" VerticalAlignment="Center" x:Name="RecordValue" Grid.Column="0" Grid.Row="3" Text="{Binding GlucoseRecordValue}" InputScope="Number"/>
+                <TextBlock Text="{Binding Path=LocalizedLabels.unit_mmol, Source={StaticResource Labels}}" VerticalAlignment="Center" x:Name="RecordValueUnit" Grid.Column="2" Grid.Row="3" Style="{StaticResource PhoneTextLargeStyle}"/>
 
                 <TextBlock VerticalAlignment="Center" x:Name="spacer" Grid.Column="0"  Grid.Row="4" Text=" " Style="{StaticResource PhoneTextLargeStyle}"/>
 
-                <Button Grid.Column="0" Grid.Row="5" Content="Save" Click="Save_Record" Tag="{Binding GlucoseRecordId}"/>
-                <Button Grid.Column="1" Grid.Row="5" Content="Cancel" Click="Cancel"/>
+                <Button Content="{Binding Path=LocalizedLabels.save, Source={StaticResource Labels}}" Grid.Column="0" Grid.Row="5" Click="Save_Record" Tag="{Binding GlucoseRecordId}"/>
+                <Button Content="{Binding Path=LocalizedLabels.cancel, Source={StaticResource Labels}}" Grid.Column="1" Grid.Row="5" Click="Cancel"/>
 
             </Grid>
 
@@ -68,8 +62,7 @@
 
         <Button Margin="10"  Style="{StaticResource TabButton}" Click="Delete_Record"
                 VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding GlucoseRecordId}"
-                Content="Delete" IsEnabled="{Binding GlucoseRecordId}" Grid.Row="2"/>
-        <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="257,98,0,0" Name="URL" Text="TextBlock" VerticalAlignment="Top" />
+                Content="{Binding Path=LocalizedLabels.delete, Source={StaticResource Labels}}" IsEnabled="{Binding GlucoseRecordId}" Grid.Row="2"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

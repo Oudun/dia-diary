@@ -117,7 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="glucoselevel" xml:space="preserve">
     <value>Glucose level</value>
+  </data>
+  <data name="glucose_level" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="glucose_record" xml:space="preserve">
+    <value>Glucose Record</value>
+  </data>
+  <data name="glucose_records" xml:space="preserve">
+    <value>Glucose Records</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="unit_mg" xml:space="preserve">
+    <value>mg/dL</value>
+  </data>
+  <data name="unit_mmol" xml:space="preserve">
+    <value>mmol/L</value>
   </data>
 </root>

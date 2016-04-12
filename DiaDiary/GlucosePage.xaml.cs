@@ -13,8 +13,8 @@ using Microsoft.Phone.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace PhoneAppDB
-{
+namespace TypeOneControl {
+    
     public partial class GlucosePage : PhoneApplicationPage, INotifyPropertyChanged  {
 
         private AppDataContext dataContext;
@@ -61,19 +61,6 @@ namespace PhoneAppDB
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void Add_Record(object sender, RoutedEventArgs e) {
-/*
-            glucoserecord glucoserecord = new glucoserecord { 
-                glucoserecordvalue = float.parse(glucosevalueinput.text), 
-                glucosetime = datetime.now 
-            };
-
-            glucoserecords.add(glucoserecord);
-            datacontext.glucoserecordstable.insertonsubmit(glucoserecord);
-            datacontext.submitchanges();
-*/        
-        }
-
         private void New_Record(object sender, RoutedEventArgs e) {
 
             NavigationService.Navigate(new Uri("/GlucosePageEdit.xaml", UriKind.Relative));
@@ -89,8 +76,7 @@ namespace PhoneAppDB
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button_Click(object sender, RoutedEventArgs e) {
 
         }
 

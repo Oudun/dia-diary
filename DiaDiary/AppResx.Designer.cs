@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PhoneAppDB {
+namespace TypeOneControl {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PhoneAppDB {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PhoneAppDB.AppResx", typeof(AppResx).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TypeOneControl.AppResx", typeof(AppResx).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,110 @@ namespace PhoneAppDB {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string add {
+            get {
+                return ResourceManager.GetString("add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string date {
+            get {
+                return ResourceManager.GetString("date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string delete {
+            get {
+                return ResourceManager.GetString("delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string glucose_level {
+            get {
+                return ResourceManager.GetString("glucose_level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glucose Record.
+        /// </summary>
+        public static string glucose_record {
+            get {
+                return ResourceManager.GetString("glucose_record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glucose Records.
+        /// </summary>
+        public static string glucose_records {
+            get {
+                return ResourceManager.GetString("glucose_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Glucose level.
         /// </summary>
         public static string glucoselevel {
             get {
                 return ResourceManager.GetString("glucoselevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string time {
+            get {
+                return ResourceManager.GetString("time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mg/dL.
+        /// </summary>
+        public static string unit_mg {
+            get {
+                return ResourceManager.GetString("unit_mg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mmol/L.
+        /// </summary>
+        public static string unit_mmol {
+            get {
+                return ResourceManager.GetString("unit_mmol", resourceCulture);
             }
         }
     }

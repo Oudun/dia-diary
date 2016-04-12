@@ -9,15 +9,16 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace PhoneAppDB {
+namespace TypeOneControl {
 
-    public class LocalizedResx {        
+    public class LocalizedResx {
 
-        private static PhoneAppDB.AppResx mylocalizedresx = new PhoneAppDB.AppResx();
+        private static TypeOneControl.AppResx localizedLabels = new TypeOneControl.AppResx();
 
-        public PhoneAppDB.AppResx MyLocalizedResx {
+        public TypeOneControl.AppResx LocalizedLabels
+        {
 
-            get{ return mylocalizedresx;}
+            get { return localizedLabels; }
 
         }
 

@@ -13,7 +13,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace PhoneAppDB {
+namespace TypeOneControl
+{
 
     public partial class App : Application {
 
@@ -36,6 +37,7 @@ namespace PhoneAppDB {
             {
                 if (db.DatabaseExists() == false) {
                     db.CreateDatabase();
+                    System.Diagnostics.Debug.WriteLine("Database is not present");
                 } else {
                     System.Diagnostics.Debug.WriteLine("Database 2 present");
                 }
