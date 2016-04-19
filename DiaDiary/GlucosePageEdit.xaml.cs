@@ -38,11 +38,11 @@ namespace TypeOneControl
             if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex)) {
                 int index = int.Parse(selectedIndex);
                 this.DataContext = this;
-                glucoseRecord = dataContext.GlucoseRecordsTable.Single(x => x.GlucoseRecordId == index);
+                glucoseRecord = dataContext.GlucoseRecordsTable.Single(x => x.Id == index);
             } else {
                 glucoseRecord = new GlucoseRecord {
-                    GlucoseRecordValue = 0,
-                    GlucoseTime = DateTime.Now
+                    Value = 0,
+                    DateTime = DateTime.Now
                 };                         
             }
             
@@ -64,19 +64,19 @@ namespace TypeOneControl
 
 
             //Updating glucose level
-            glucoseRecord.GlucoseRecordValue = float.Parse(RecordValue.Text);
+            glucoseRecord.Value = float.Parse(RecordValue.Text);
 
             //Updating time glucose level taken
-            DateTime dateTime = glucoseRecord.GlucoseTime;
+            DateTime dateTime = glucoseRecord.DateTime;
             DateTime updatedDate = DateTime.Parse(RecordDate.ValueString);
             DateTime updatedTime = DateTime.Parse(RecordTime.ValueString);
             DateTime newDateTime = new DateTime(
                 updatedDate.Year, updatedDate.Month, updatedDate.Day,
                 updatedTime.Hour, updatedTime.Minute, 0
                 );
-            glucoseRecord.GlucoseTime = newDateTime;
+            glucoseRecord.DateTime = newDateTime;
 
-            if (glucoseRecord.GlucoseRecordId == 0) {
+            if (glucoseRecord.Id == 0) {
                 dataContext.GlucoseRecordsTable.InsertOnSubmit(glucoseRecord);
             } 
 
@@ -91,7 +91,7 @@ namespace TypeOneControl
 
             if (MessageBox.Show("Are you sure?", "Delete Item", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
 
-                if (glucoseRecord.GlucoseRecordId > 0) {
+                if (glucoseRecord.Id > 0) {
 
                     dataContext.GlucoseRecordsTable.DeleteOnSubmit(glucoseRecord);
                     dataContext.SubmitChanges();

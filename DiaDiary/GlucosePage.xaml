@@ -37,13 +37,15 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="120" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Path=GlucoseRecordValue}" Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <Button VerticalAlignment="Center" Content="edit" Grid.Column="2" Click="Edit_Record" Tag="{Binding Path=GlucoseRecordId}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Right" Text="{Binding Path=Value}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="1" TextAlignment="Left" Text="mmol/l" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2" TextAlignment="Right" Text="{Binding Path=GlucoseTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <Button VerticalAlignment="Center" Grid.Column="3" Style="{StaticResource EditButton}" Click="Edit_Record" Tag="{Binding Path=Id}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -51,7 +53,7 @@
         </Grid>
 
          <Button Margin="10"  Style="{StaticResource TabButton}" Click="New_Record"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding GlucoseRecordId}"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding Id}"
                 Content="{Binding Path=LocalizedLabels.add, Source={StaticResource Labels}}" Grid.Row="2"/>
         
     </Grid>

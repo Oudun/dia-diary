@@ -30,29 +30,51 @@
                    Text="{Binding Path=LocalizedLabels.shot_records, Source={StaticResource Labels}}" 
                    Style="{StaticResource PhoneTextTitle1Style}"/>
 
-        <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="shotRecordsList" ItemsSource="{Binding ShotRecords}" >
+            <ListBox x:Name="shotRecordsList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Path=ShotRecordValue}" Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Text="{Binding Path=ShotTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
-                            <Button VerticalAlignment="Center" Content="edit" Grid.Column="2" Click="Edit_Record" Tag="{Binding Path=ShotRecordId}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Path=Value}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="1" TextAlignment="Left" Text="{Binding Path=Name}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2" TextAlignment="Left" Text="{Binding Path=DateTime, StringFormat='MMM dd, hh:mm'}"  Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <Button VerticalAlignment="Center" Grid.Column="3" Style="{StaticResource EditButton}" Click="Edit_Record" Tag="{Binding Path=Id}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
 
-        <Button Margin="10"  Style="{StaticResource TabButton}" Click="New_Record"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding Id}"
-                Content="{Binding Path=LocalizedLabels.add, Source={StaticResource Labels}}" Grid.Row="2"/>
+        <Grid x:Name="InsulinesPanel" Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="Add shot of" 
+                           Style="{StaticResource PhoneTextLargeStyle}"/>
+                <ListBox ItemsSource="{Binding Insulins}" Grid.Column="1">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="10"  Style="{StaticResource TabButton}" Click="New_Record" 
+                                    VerticalAlignment="Bottom" HorizontalAlignment="Right" Tag="{Binding Id}" 
+                                    Content="{Binding Path=Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
 
     </Grid>
 

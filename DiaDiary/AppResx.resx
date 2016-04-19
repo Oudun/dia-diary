@@ -153,4 +153,10 @@
   <data name="unit_mmol" xml:space="preserve">
     <value>mmol/L</value>
   </data>
+  <data name="shot_records" xml:space="preserve">
+    <value>Shot Records</value>
+  </data>
+  <data name="shot_record" xml:space="preserve">
+    <value>Shot Record</value>
+  </data>
 </root>

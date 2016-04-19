@@ -21,26 +21,46 @@ namespace TypeOneControl
         public Table<Insulin> InsulinsTable;
         public Table<MealRecord> MealRecordsTable;
         public Table<Meal> MealsTable;
+        public Table<MealUnit> MealUnitsTable;
 
     }
 
     [Table]
     public class GlucoseRecord {
 
+        public GlucoseRecord() { 
+        
+        }
+
+        public GlucoseRecord(float aValue, DateTime aDateTime) {
+            this.Value = aValue;
+            this.DateTime = aDateTime;
+        }
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public int GlucoseRecordId { get; set; }
+        public int Id { get; set; }
 
         [Column]
-        public float GlucoseRecordValue { get; set; }
+        public float Value { get; set; }
 
         [Column]
-        public DateTime GlucoseTime { get; set; }
+        public DateTime DateTime { get; set; }
         
     }
 
     [Table]
     public class ShotRecord {
 
+        public ShotRecord() { 
+        
+        }
+
+        public ShotRecord(float aValue, int aInsulinId, DateTime aDateTime) {
+            this.Value = aValue;
+            this.InsulinId = aInsulinId;
+            this.DateTime = aDateTime;
+        }
+       
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
         public int Id { get; set; }
 
@@ -58,6 +78,16 @@ namespace TypeOneControl
     [Table]
     public class Insulin {
 
+        public Insulin() {
+
+        }
+
+        public Insulin(String aName, String aResourceCode, bool aInUse) {
+            this.Name = aName;
+            this.ResourceCode = aResourceCode;
+            this.InUse = aInUse;
+        }
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
         public int Id { get; set; }
 
@@ -66,6 +96,9 @@ namespace TypeOneControl
 
         [Column]
         public string ResourceCode { get; set; }
+
+        [Column]
+        public bool InUse { get; set; }
 
     }
 
@@ -89,6 +122,17 @@ namespace TypeOneControl
     [Table]
     public class Meal {
 
+        public Meal() {
+
+        }
+
+        public Meal(String aName, String aResourceCode, int aMealUnitId, int aBreadUnits) {
+            this.Name = aName;
+            this.ResourceCode = aResourceCode;
+            this.MealUnitId = aMealUnitId;
+            this.BreadUnits = aBreadUnits;
+        }
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
         public int Id { get; set; }
 
@@ -99,7 +143,7 @@ namespace TypeOneControl
         public string ResourceCode { get; set; }
 
         [Column]
-        public int UnitId { get; set; }
+        public int MealUnitId { get; set; }
 
         [Column]
         public int BreadUnits { get; set; }
@@ -168,7 +212,23 @@ namespace TypeOneControl
     [Table]
     public class MealUnit {
 
-        [Column]
+        public MealUnit() {
+
+        }
+
+        public MealUnit(String aName, String aResourceCode) {
+            this.Name = aName;
+            this.ResourceCode = aResourceCode;
+        }
+
+        public MealUnit(int aId, String aName, String aResourceCode)
+        {
+            this.Id = aId;
+            this.Name = aName;
+            this.ResourceCode = aResourceCode;
+        }
+        
+        [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
         public int Id { get; set; }
 
         [Column]
@@ -178,7 +238,6 @@ namespace TypeOneControl
         public string ResourceCode { get; set; }
 
     }
-
 
 }
 

@@ -142,6 +142,24 @@ namespace TypeOneControl {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shot Record.
+        /// </summary>
+        public static string shot_record {
+            get {
+                return ResourceManager.GetString("shot_record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shot Records.
+        /// </summary>
+        public static string shot_records {
+            get {
+                return ResourceManager.GetString("shot_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time.
         /// </summary>
         public static string time {

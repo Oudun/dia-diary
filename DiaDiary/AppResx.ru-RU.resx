@@ -153,4 +153,10 @@
   <data name="unit_mmol" xml:space="preserve">
     <value>ммоль/л</value>
   </data>
+  <data name="shot_records" xml:space="preserve">
+    <value>Инъекции инсулина</value>
+  </data>
+  <data name="shot_record" xml:space="preserve">
+    <value>Инъекция инсулина</value>
+  </data>
 </root>

@@ -17,6 +17,8 @@ namespace TypeOneControl {
     
     public partial class GlucosePage : PhoneApplicationPage, INotifyPropertyChanged  {
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        
         private AppDataContext dataContext;
 
         private ObservableCollection<GlucoseRecord> _glucoseRecords;
@@ -57,9 +59,6 @@ namespace TypeOneControl {
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
 
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void New_Record(object sender, RoutedEventArgs e) {
 
